@@ -6,12 +6,12 @@
 
         <div class="d-flex flex-column align-items-center">
             <h1 class="py-2">Nuovo progetto</h1>
-            <label for="name">Nome</label>
+            <label for="name"><strong>Nome</strong></label>
             <input type="text" id="name" name="name">
-            <label for="description">Descrizione</label>
+            <label for="description"><strong>Descrizione</strong></label>
             <input type="text" id="description" name="description">
             <div class="my-3">
-                <label class="form-label me-3">Visibilità:</label>
+                <label class="form-label me-3"><strong>Visibilità:</strong></label>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" checked name="private" value="0" id="public">
                     <label class="form-check-label" for="public">Pubblico</label>
@@ -22,14 +22,24 @@
                 </div>
             </div>
 
-            <label for="collaborators">Collaboratori</label>
+            <label for="collaborators"><strong>Collaboratori</strong></label>
             <input type="text" id="collaborators" name="collaborators">
-            <label class="my-2" for="tipologia">Tipologia</label>
+            <label class="my-2" for="tipologia"><strong>Tipologia</strong></label>
             <select class="my-2" name="type_id" id="type_id">
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
             </select>
+            <label class="my-2"><strong>Tecnologie:</strong></label>
+            @foreach ($technologies as $technology)
+                <div>
+                    <label for="technology{{ $technology->id }}">{{ $technology->name }}</label>
+                    <input type="checkbox" name="technology[]" id="technology{{ $technology->id }}"
+                        value="{{ $technology->id }}">
+                </div>
+            @endforeach
+
+
             <button type="submit" class="btn btn-primary my-4">Crea progetto</button>
         </div>
         {{-- Bottone per tornare a index --}}

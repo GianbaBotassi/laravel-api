@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 class LoggedController extends Controller
 {
@@ -19,14 +20,16 @@ class LoggedController extends Controller
     public function create()
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('profile.create', compact('types'));
+
+        return view('profile.create', compact('types', 'technologies'));
     }
 
     // Funzione per creare nuovo progetto con validazioni basic
     public function store(Request $request)
     {
-
+        dd($request->all());
         $data = $request->validate([
             'name' => 'required',
             'description' => 'required',
