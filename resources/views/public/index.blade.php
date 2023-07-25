@@ -14,7 +14,7 @@
                             {{-- Bottone per edit --}}
                             <span>
                                 <a class="btn btn-warning py-1 px-1 mx-3 text-decoration-none text-dark"
-                                    style="font-size: 0.7rem" href="{{ route('edits', $project->id) }}">Edit</a>
+                                    style="font-size: 0.7rem" href="{{ route('edit', $project->id) }}">Edit</a>
                             </span>
                         </li>
 

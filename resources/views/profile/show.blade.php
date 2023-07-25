@@ -19,7 +19,10 @@
             <span class="col-2"><strong>Tipologia:</strong> </span>
             <span class="offset-4 col-6">{{ $projects->type->name }}</span>
         </div>
-
+    </div>
+    {{-- Bottone per edit --}}
+    <div class="text-center">
+        <a class="btn btn-warning py-1 px-3 mx-3 text-decoration-none" href="{{ route('edit', $projects->id) }}">Edit</a>
     </div>
     {{-- Bottone per tornare a index --}}
     <div class="text-center pt-3">

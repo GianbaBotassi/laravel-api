@@ -17,11 +17,11 @@ class MainController extends Controller
 
         return view('public.index', compact('projects'));
     }
-    public function edits($id)
+    public function edit($id)
     {
         $types = Type::all();
         $project = Project::findOrFail($id);
 
-        return view('profile.edits', compact('project', 'types'));
+        return view('profile.edit', compact('project', 'types'));
     }
 }
