@@ -34,6 +34,21 @@
                         {{ $type->name }}</option>
                 @endforeach
             </select>
+            <label class="my-2"><strong>Tecnologie:</strong></label>
+
+            {{-- Ciclo tutte le tecnologie --}}
+            @foreach ($technologies as $technology)
+                <div>
+                    <label for="technology{{ $technology->id }}">{{ $technology->name }}</label>
+                    <input type="checkbox" name="technology[]" id="technology{{ $technology->id }}"
+                        value="{{ $technology->id }}" {{-- Ciclo tutte le tecnologie del progetto, metto una condizione if per dare il check --}}
+                        @foreach ($project->technologies as $item)
+                            @if ($item->id == $technology->id)
+                                checked
+                            @endif @endforeach>
+
+                </div>
+            @endforeach
             <button type="submit" class="btn btn-primary my-4">Aggiorna progetto</button>
         </div>
         <div class="text-center pt-3">

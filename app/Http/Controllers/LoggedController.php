@@ -48,9 +48,11 @@ class LoggedController extends Controller
     public function edit($id)
     {
         $types = Type::all();
+        $technologies = Technology::all();
+
         $project = Project::findOrFail($id);
 
-        return view('profile.edit', compact('project', 'types'));
+        return view('profile.edit', compact('project', 'types', 'technologies'));
     }
 
     public function update(Request $request, $id)
