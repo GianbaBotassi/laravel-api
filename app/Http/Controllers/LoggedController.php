@@ -49,7 +49,7 @@ class LoggedController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        // dd($request->all());
         $data = $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -63,5 +63,15 @@ class LoggedController extends Controller
         $project->update($data);
 
         return redirect()->route('show', $project->id);
+    }
+
+    // Funzione per eliminare elemento
+    public function destroy($id)
+    {
+        $project = Project::findOrFail($id);
+
+        $project->delete();
+
+        return redirect()->route('index');
     }
 }

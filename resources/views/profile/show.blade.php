@@ -13,7 +13,7 @@
         </div>
         <div class="row justify-content-between">
             <span class="col-2"><strong>Visibilità:</strong> </span>
-            <span class="offset-4 col-6">{{ $projects->collaborators ? 'Privato' : 'Pubblico' }}</span>
+            <span class="offset-4 col-6">{{ $projects->private ? 'Privato' : 'Pubblico' }}</span>
         </div>
         <div class="row justify-content-between py-4">
             <span class="col-2"><strong>Tipologia:</strong> </span>

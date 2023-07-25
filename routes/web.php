@@ -20,8 +20,10 @@ use App\Http\Controllers\LoggedController;
 // Rotta index accessibile a tutti
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-Route::get('profile/create', [LoggedController::class, 'create'])
-    ->name('create');
+// Rotta per la pagina create
+Route::get('profile/create', [LoggedController::class, 'create'])->name('create');
+
+// Rotta per il salvataggio del nuovo progetto
 Route::post('profile/store', [LoggedController::class, 'store'])->name('store');
 
 // Rotta per vedere dati
@@ -30,10 +32,14 @@ Route::get('/profile/show/{id}', [LoggedController::class, 'show'])
     ->name('show');
 
 
+// Rotta per editare progetto
 Route::get('profile/edit{id}', [LoggedController::class, 'edit'])->name('edit');
 
-// Rotta per update
+// Rotta senza pagina per update
 Route::put('profile/update/{id}', [LoggedController::class, 'update'])->name('update');
+
+// Rotta per eliminare elemento
+Route::delete('destroy/{id}', [LoggedController::class, 'destroy'])->name('destroy');
 
 
 Route::get('/dashboard', function () {
