@@ -17,12 +17,13 @@ class TypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $nomiTypes = ['Corso Boolean', 'Personale', 'Lavoro', 'Università'];
+        Type::factory()->count(4)->create();
+        // $nomiTypes = ['Corso Boolean', 'Personale', 'Lavoro', 'Università'];
 
-        foreach ($nomiTypes as $nome) {
-            $type = new Type();
-            $type->name = $nome;
-            $type->save();
-        }
+        // foreach ($nomiTypes as $nome) {
+        //     $type = new Type();
+        //     $type->name = $nome;
+        //     $type->save();
+        // }
     }
 }
