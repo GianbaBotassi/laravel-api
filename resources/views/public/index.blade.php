@@ -2,11 +2,11 @@
 @section('content')
     <div class="container d-flex justify-content-center align-items-center">
         <div class="text-center">
-            <h1 class="mt-2 py-1 text-white rounded bg-secondary">Portfolio</h1>
+            <h1 class="d-inline-block mt-2 py-1 text-white rounded bg-secondary">Portfolio</h1>
             <div class="mt-4">
-                <ul class="p-0" style="width: 400px">
+                <ul class="p-0" style="width: 600px">
                     @foreach ($projects as $project)
-                        <li class="list-unstyled my-4 d-flex justify-content-between align-items-center">
+                        <li class="list-unstyled my-2 d-flex justify-content-between align-items-center">
                             <a class="text-decoration-none py-1 px-3 text-dark me-auto" style="font-size: 1.2rem"
                                 href="{{ route('show', $project->id) }}">
                                 {{ ucfirst($project->name) }}
