@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-    <form class="container my-2" method="POST" action="{{ route('store') }}">
+    <form class="container my-2" method="POST" action="{{ route('update', $project->id) }}">
         @csrf
-        @method('POST')
+        @method('put')
         <div class="d-flex flex-column align-items-center">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-            <label for="description">Description</label>
-            <input type="text" id="description" name="description">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" value="{{ $project->name }}">
+            <label for="description">Descrizione</label>
+            <input type="text" id="description" name="description" value="{{ $project->description }}">
             <div class="my-3">
                 <label class="form-label me-3">Visibilità:</label>
                 <div class="form-check form-check-inline">
@@ -23,15 +23,18 @@
                 </div>
             </div>
 
-            <label for="collaborators">Collaborators</label>
-            <input type="text" id="collaborators" name="collaborators">
+            <label for="collaborators">Collaboratori</label>
+            <input type="text" id="collaborators" name="collaborators" value="{{ $project->collaborators }}">
             <label class="my-2" for="tipologia">Tipologia</label>
             <select class="my-2" name="type_id" id="type_id">
+
+                {{-- Condizione if per riportare la tipologia attuale --}}
                 @foreach ($types as $type)
-                    <option value="{{ $project->type_id }}">{{ $project->type->name }}</option>
+                    <option value="{{ $type->id }}" {{ $project->type->id == $type->id ? 'selected' : '' }}>
+                        {{ $type->name }}</option>
                 @endforeach
             </select>
-            <button type="submit" class="btn btn-primary my-4">Crea progetto</button>
+            <button type="submit" class="btn btn-primary my-4">Aggiorna progetto</button>
         </div>
         <div class="text-center pt-3">
             <a class="rounded bg-secondary py-1 px-2 text-decoration-none text-light"

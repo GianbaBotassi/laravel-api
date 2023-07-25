@@ -3,10 +3,12 @@
     <form class="container my-2" method="POST" action="{{ route('store') }}">
         @csrf
         @method('POST')
+
         <div class="d-flex flex-column align-items-center">
-            <label for="name">Name</label>
+            <h1 class="py-2">Nuovo progetto</h1>
+            <label for="name">Nome</label>
             <input type="text" id="name" name="name">
-            <label for="description">Description</label>
+            <label for="description">Descrizione</label>
             <input type="text" id="description" name="description">
             <div class="my-3">
                 <label class="form-label me-3">Visibilità:</label>
@@ -20,7 +22,7 @@
                 </div>
             </div>
 
-            <label for="collaborators">Collaborators</label>
+            <label for="collaborators">Collaboratori</label>
             <input type="text" id="collaborators" name="collaborators">
             <label class="my-2" for="tipologia">Tipologia</label>
             <select class="my-2" name="type_id" id="type_id">
@@ -29,6 +31,11 @@
                 @endforeach
             </select>
             <button type="submit" class="btn btn-primary my-4">Crea progetto</button>
+        </div>
+        {{-- Bottone per tornare a index --}}
+        <div class="text-center py-3">
+            <a class="rounded bg-secondary py-1 px-2 text-decoration-none text-light"
+                href="{{ route('index') }}">Indietro</a>
         </div>
 
         @if ($errors->any())

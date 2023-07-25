@@ -39,6 +39,13 @@ class LoggedController extends Controller
 
         return redirect()->route('show', $project->id);
     }
+    public function edit($id)
+    {
+        $types = Type::all();
+        $project = Project::findOrFail($id);
+
+        return view('profile.edit', compact('project', 'types'));
+    }
 
     public function update(Request $request, $id)
     {

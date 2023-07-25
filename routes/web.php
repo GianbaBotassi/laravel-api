@@ -30,10 +30,10 @@ Route::get('/profile/show/{id}', [LoggedController::class, 'show'])
     ->name('show');
 
 
-Route::get('profile/edit{id}', [MainController::class, 'edit'])->name('edit');
+Route::get('profile/edit{id}', [LoggedController::class, 'edit'])->name('edit');
 
 // Rotta per update
-Route::put('/profile/update/{id}', [LoggedController::class, 'update'])->name('update');
+Route::put('profile/update/{id}', [LoggedController::class, 'update'])->name('update');
 
 
 Route::get('/dashboard', function () {
