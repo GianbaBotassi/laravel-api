@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 class ProjectTableSeeder extends Seeder
 {
@@ -29,7 +30,16 @@ class ProjectTableSeeder extends Seeder
             // Il type_id sarà uguale all'id del modello preso a caso
             // N.B. inRandomOrder prende il modello, poi bisogna specificare il dato (->id)
             $project->type_id = $type->id;
+
             $project->save();
+        }
+
+        foreach ($projects as $project) {
+
+            $technologies = Technology::inRandomOrder()->limit(rand(1, 7))->get();
+            // dd($technologies);
+
+            $project->technologies()->sync($technologies);
         }
     }
 }

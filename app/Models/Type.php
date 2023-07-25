@@ -13,6 +13,7 @@ class Type extends Model
         'name'
     ];
 
+    // Relazione onetomany con project
     public function projects()
     {
 

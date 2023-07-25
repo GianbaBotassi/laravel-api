@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::create('project_technology', function (Blueprint $table) {
-            $table->id();
-
-
-            $table->timestamps();
-        });
-        Schema::table('project_technology', function (Blueprint $table) {
 
             $table->foreignId('technology_id')->constrained();
             $table->foreignId('project_id')->constrained();

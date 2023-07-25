@@ -17,9 +17,16 @@ class Project extends Model
         'type_id'
     ];
 
+    // Relazione onetomany con Type
     public function type()
     {
 
         return $this->belongsTo(Type::class);
+    }
+
+    // Relazione manytomany con technology
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class);
     }
 }
