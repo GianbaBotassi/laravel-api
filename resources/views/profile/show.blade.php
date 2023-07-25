@@ -4,20 +4,32 @@
         <div class="text-center">Titolo Progetto:</div>
         <h1 class="text-center container">{{ ucfirst($projects->name) }}</h1>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Descrizione:</strong> </span>
+            <span class="col-2"><strong>Descrizione:</strong></span>
             <span class="offset-4 col-6">{{ $projects->description }}</span>
         </div>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Numero collaboratori:</strong> </span>
+            <span class="col-2"><strong>Numero collaboratori:</strong></span>
             <span class="offset-4 col-6">{{ $projects->collaborators }}</span>
         </div>
         <div class="row justify-content-between">
-            <span class="col-2"><strong>Visibilità:</strong> </span>
+            <span class="col-2"><strong>Visibilità:</strong></span>
             <span class="offset-4 col-6">{{ $projects->private ? 'Privato' : 'Pubblico' }}</span>
         </div>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Tipologia:</strong> </span>
+            <span class="col-2"><strong>Tipologia:</strong></span>
             <span class="offset-4 col-6">{{ $projects->type->name }}</span>
+        </div>
+        <div class="row justify-content-between py-4">
+            <span class="col-2"><strong>Tecnologie:</strong></span>
+            <span class="offset-4 col-6">
+                @foreach ($projects->technologies as $item)
+                    {{ $item->name }}
+                    {{-- Condizione di laravel blade per selezionare ultimo loop --}}
+                    @if (!$loop->last)
+                        ,
+                    @endif
+                @endforeach
+            </span>
         </div>
     </div>
     {{-- Bottone per edit --}}
