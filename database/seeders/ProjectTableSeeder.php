@@ -39,7 +39,7 @@ class ProjectTableSeeder extends Seeder
             $technologies = Technology::inRandomOrder()->limit(rand(1, 7))->get();
             // dd($technologies);
 
-            $project->technologies()->sync($technologies);
+            $project->technologies()->attach($technologies);
         }
     }
 }

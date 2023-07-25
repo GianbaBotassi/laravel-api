@@ -42,6 +42,7 @@ Route::put('profile/update/{id}', [LoggedController::class, 'update'])->name('up
 Route::delete('destroy/{id}', [LoggedController::class, 'destroy'])->name('destroy');
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
