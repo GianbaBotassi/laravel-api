@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="text-center my-4">
-        <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('project-create') }}">Crea
+        <a class="rounded bg-secondary py-2 px-4 text-light" href="{{ route('project-create') }}">Crea
             nuovo progetto</a>
     </div>
 @endsection
