@@ -4,24 +4,24 @@
         <div class="text-center">Titolo Progetto:</div>
         <h1 class="text-center container">{{ ucfirst($projects->name) }}</h1>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Descrizione:</strong></span>
-            <span class="offset-4 col-6">{{ $projects->description }}</span>
+            <span class="offset-4 col-3"><strong>Descrizione:</strong></span>
+            <span class="col-5">{{ $projects->description }}</span>
         </div>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Numero collaboratori:</strong></span>
-            <span class="offset-4 col-6">{{ $projects->collaborators }}</span>
+            <span class="offset-4 col-3"><strong>Numero collaboratori:</strong></span>
+            <span class="col-5">{{ $projects->collaborators }}</span>
         </div>
         <div class="row justify-content-between">
-            <span class="col-2"><strong>Visibilità:</strong></span>
-            <span class="offset-4 col-6">{{ $projects->private ? 'Privato' : 'Pubblico' }}</span>
+            <span class="offset-4 col-3"><strong>Visibilità:</strong></span>
+            <span class="col-5">{{ $projects->private ? 'Privato' : 'Pubblico' }}</span>
         </div>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Tipologia:</strong></span>
-            <span class="offset-4 col-6">{{ $projects->type->name }}</span>
+            <span class="offset-4 col-3"><strong>Tipologia:</strong></span>
+            <span class="col-5">{{ $projects->type->name }}</span>
         </div>
         <div class="row justify-content-between py-4">
-            <span class="col-2"><strong>Tecnologie:</strong></span>
-            <span class="offset-4 col-6">
+            <span class="offset-4 col-3"><strong>Tecnologie:</strong></span>
+            <span class="col-5">
                 @foreach ($projects->technologies as $item)
                     {{ $item->name }}
                     {{-- Condizione di laravel blade per selezionare ultimo loop --}}
