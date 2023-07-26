@@ -42,7 +42,7 @@ class ProjectController extends Controller
                 'private' => 'required',
                 'collaborators' => 'required',
                 'type_id' => 'required|integer',
-                'technology' => 'nullable|array'
+                'technology' => 'required|nullable|array'
             ]);
 
         $project = Project::create($data);
@@ -74,7 +74,7 @@ class ProjectController extends Controller
                 'private' => 'required',
                 'collaborators' => 'required',
                 'type_id' => 'required',
-                'technology' => 'nullable|array'
+                'technology' => 'required|nullable|array'
             ]);
 
         $project = Project::findOrFail($id);
