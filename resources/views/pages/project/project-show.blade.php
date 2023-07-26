@@ -25,10 +25,11 @@
         <div class="row justify-content-between align-items-center py-4">
             <span class="offset-2 col-3"><strong>Tecnologie:</strong></span>
             <span class="col-6">
-                @foreach ($projects->technologies as $item)
-                    <span class="rounded bg-info px-2 py-1 d-inline-block me-1 text-light">
-                        {{ $item->name }}
-                    </span>
+                @foreach ($projects->technologies as $technology)
+                    <a href="{{ route('technology-show', $technology->id) }}"
+                        class="btn btn-info px-2 py-1 d-inline-block me-1 text-light">
+                        {{ $technology->name }}
+                    </a>
                     {{-- Nel caso posso usare condizione di laravel blade per selezionare ultimo loop --}}
                     {{-- @if (!$loop->last)
                         ,

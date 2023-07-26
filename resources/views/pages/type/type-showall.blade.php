@@ -5,7 +5,7 @@
         <h1 class="text-center container">Tipologie</h1>
         <ul class="text-center p-0">
             @foreach ($types as $type)
-                <li>
+                <li class="my-2">
                     <a class="rounded list-hover px-2 py-1" href="{{ route('type-show', $type->id) }}">{{ $type->name }}</a>
                 </li>
             @endforeach
