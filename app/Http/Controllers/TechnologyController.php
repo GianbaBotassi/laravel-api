@@ -70,12 +70,8 @@ class TechnologyController extends Controller
     {
         $technology = Technology::findOrFail($id);
 
-        $data = $request->all();
+        $technology->projects()->detach();
 
-        foreach ($technology->projects as $project) {
-            $project->technology_id = $data['technology_id'];
-            $project->save();
-        }
 
         $technology->delete();
 

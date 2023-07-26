@@ -52,19 +52,7 @@
                     <div class="modal-content">
                         <div class="modal-body text-center">
                             <h4>Eliminazione Tecnologia</h4>
-                            <p>
-                                Se vuoi eliminare questo elemento devi riassegnare una Tecnologia ai progetti collegati.
-                            </p>
-                        </div>
-                        <div class="modal-body">
-                            <label for="technology_id">Seleziona la Tecnologia da assegnare: </label>
-                            <select name="technology_id" id="technology_id">
-                                {{-- @foreach ($technologies as $subtechnology)
-                                    <option value="{{ $subtechnology->id }}" @disabled($subtechnology->id == $technology->id)>
-                                        {{ $subtechnology->name }}
-                                    </option>
-                                @endforeach --}}
-                            </select>
+                            <p>Sei sicuro di voler eliminare questa tecnologia?</p>
                         </div>
                         <div class="modal-footer">
 
