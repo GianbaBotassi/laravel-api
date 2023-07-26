@@ -11,7 +11,7 @@
             <label for="description"><strong>Descrizione</strong></label>
             <input type="text" id="description" name="description">
 
-            <button type="submit" class="btn btn-primary my-4">Crea Tipologia</button>
+            <button type="submit" class="btn btn-primary mt-3 mb-2">Crea Tipologia</button>
         </div>
         {{-- Bottone per tornare a index --}}
         <div class="text-center py-3">

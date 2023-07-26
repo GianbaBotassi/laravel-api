@@ -39,7 +39,10 @@ class TypeController extends Controller
     {
         $type = Type::findOrFail($id);
 
-        return view('pages/type/type-show', compact('type'));
+        $types = Type::all();
+
+
+        return view('pages/type/type-show', compact('type', 'types'));
     }
 
     public function edit($id)
@@ -65,12 +68,19 @@ class TypeController extends Controller
         return redirect()->route('type-show', $type->id);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $type = Type::findOrFail($id);
 
+        $data = $request->all();
+
+        foreach ($type->projects as $project) {
+            $project->type_id = $data['type_id'];
+            $project->save();
+        }
+
         $type->delete();
 
-        return redirect()->route('index');
+        return redirect()->route('type-showall');
     }
 }
