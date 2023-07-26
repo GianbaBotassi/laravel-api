@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use App\Http\Controllers\ProjectController;
 // Rotta index accessibile a tutti
 Route::get('/', [GuestController::class, 'index'])->name('index');
 
+
+/*--------------------------------- Rotte controller Project--------------------------------------*/
+
 // Rotta per la pagina create
 Route::get('project/create', [ProjectController::class, 'create'])->name('project-create');
 
@@ -31,7 +35,6 @@ Route::get('/project/show/{id}', [ProjectController::class, 'show'])
     // ->middleware(['auth'])
     ->name('project-show');
 
-
 // Rotta per editare progetto
 Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('project-edit');
 
@@ -40,6 +43,12 @@ Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('p
 
 // Rotta per eliminare elemento
 Route::delete('destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
+
+
+
+/*--------------------------------- Rotte controller Type--------------------------------------*/
+
+Route::get('type/show{id}', [TypeController::class, 'show'])->name('type-show');
 
 
 

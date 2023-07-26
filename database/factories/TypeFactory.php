@@ -22,7 +22,8 @@ class TypeFactory extends Factory
                 'Personale',
                 'Lavoro',
                 'Università'
-            ])
+            ]),
+            'description' => fake()->paragraph()
         ];
     }
 }

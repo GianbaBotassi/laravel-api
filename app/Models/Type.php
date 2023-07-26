@@ -10,7 +10,8 @@ class Type extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'description'
     ];
 
     // Relazione onetomany con project
