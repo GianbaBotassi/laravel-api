@@ -36,19 +36,13 @@
             <a class="btn btn-warning py-2 px-2 text-light" href="{{ route('type-edit', $type->id) }}">Edit</a>
         </div>
 
-        {{-- <form method="post" action="{{ route('type-destroy', $type->id) }}">
-
-            @csrf
-            @method('delete')
-            <button type="submit" class="btn btn-danger py-2 px-2 text-light">Elimina</button>
-        </form> --}}
-        {{-- Bottone per modale in cui richiamo come data-target la variabile contenente l'id --}}
+        {{-- Bottone che richiama la modale --}}
         <button class="btn btn-danger py-1 px-1 text-decoration-none text-white" type="button" class="btn btn-primary"
             data-toggle="modal" data-target="#modaldelete">
             Elimina
         </button>
 
-        {{-- Modale che viene richiamata in base alla variabile id creata in precedenza --}}
+        {{-- Modale  --}}
         <form method="POST" action="{{ route('type-destroy', $type->id) }}">
             @csrf
             @method('DELETE')
@@ -75,7 +69,7 @@
 
                             {{-- Bottone per eliminare --}}
 
-                            <button class="btn btn-danger py-1 px-1 text-decoration-none text-white">Elimina</button>
+                            <button class="btn btn-danger py-1 px-1 text-decoration-none text-white">Conferma</button>
         </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Indietro</button>
     </div>

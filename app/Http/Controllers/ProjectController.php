@@ -91,6 +91,8 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
+        $project->technologies()->detach();
+
         $project->delete();
 
         return redirect()->route('index');
