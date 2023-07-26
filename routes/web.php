@@ -42,14 +42,25 @@ Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('projec
 Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('project-update');
 
 // Rotta per eliminare elemento
-Route::delete('destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
+Route::delete('project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
 
 
 
 /*--------------------------------- Rotte controller Type--------------------------------------*/
 
+Route::get('type/showall', [TypeController::class, 'showall'])->name('type-showall');
+
+Route::get('type/create', [TypeController::class, 'create'])->name('type-create');
+
+Route::post('type/store', [TypeController::class, 'store'])->name('type-store');
+
 Route::get('type/show{id}', [TypeController::class, 'show'])->name('type-show');
 
+Route::get('type/edit{id}', [TypeController::class, 'edit'])->name('type-edit');
+
+Route::put('type/update/{id}', [TypeController::class, 'update'])->name('type-update');
+
+Route::delete('type/destroy/{id}', [TypeController::class, 'destroy'])->name('type-destroy');
 
 
 Route::get('/dashboard', function () {

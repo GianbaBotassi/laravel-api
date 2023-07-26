@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+    <h1 class="text-center py-2">{{ ucfirst($project->name) }}</h1>
     <form class="container my-2" method="POST" action="{{ route('project-update', $project->id) }}">
         @csrf
         @method('put')
