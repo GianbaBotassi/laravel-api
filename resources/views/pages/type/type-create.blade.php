@@ -9,13 +9,13 @@
             <label for="name"><strong>Nome</strong></label>
             <input type="text" id="name" name="name">
             <label for="description"><strong>Descrizione</strong></label>
-            <input type="text" id="description" name="description">
+            <textarea type="text" style="height: 100px;width:450px" id="description" name="description"></textarea>
 
             <button type="submit" class="btn btn-primary mt-3 mb-2">Crea Tipologia</button>
         </div>
         {{-- Bottone per tornare a index --}}
         <div class="text-center py-3">
-            <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
+            <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('type-showall') }}">Indietro</a>
         </div>
 
         @if ($errors->any())

@@ -8,7 +8,7 @@
             <label for="name"><strong>Nome</strong></label>
             <input type="text" id="name" name="name" value="{{ $type->name }}">
             <label for="description" class="mt-2"><strong>Descrizione</strong></label>
-            <input type="text" id="description" name="description" value="{{ $type->description }}">
+            <textarea style="height: 100px;width:450px" type="text" id="description" name="description">{{ $type->description }}</textarea>
 
         </div>
         <div class="d-flex justify-content-center gap-4 mt-4">

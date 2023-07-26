@@ -16,9 +16,9 @@
             <ul class="col-6">
                 @foreach ($type->projects as $project)
                     <li class="list-styled">
-                        {{-- <a href=""> --}}
-                        {{ ucfirst($project->name) }}
-                        {{-- </a> --}}
+                        <a href="{{ route('project-show', $project->id) }}">
+                            {{ ucfirst($project->name) }}
+                        </a>
                     </li>
                 @endforeach
             </ul>
