@@ -6,10 +6,16 @@
 
         <div class="d-flex flex-column align-items-center">
             <h1 class="py-2">Nuovo progetto</h1>
-            <label for="name"><strong>Nome</strong></label>
-            <input type="text" id="name" name="name">
-            <label for="description"><strong>Descrizione</strong></label>
-            <input type="text" id="description" name="description">
+            <div class="d-flex justify-content-between gap-4">
+                <div>
+                    <label for="name"><strong>Nome</strong></label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="d-flex align-items-start gap-2">
+                    <label for="description"><strong>Descrizione:</strong></label>
+                    <textarea style="height: 60px" type="text" id="description" name="description"></textarea>
+                </div>
+            </div>
             <div class="my-3">
                 <label class="form-label me-3"><strong>Visibilità:</strong></label>
                 <div class="form-check form-check-inline">
@@ -21,15 +27,21 @@
                     <label class="form-check-label" for="private">Privato</label>
                 </div>
             </div>
+            <div class="d-flex justify-content-between gap-4">
 
-            <label for="collaborators"><strong>Collaboratori</strong></label>
-            <input type="text" id="collaborators" name="collaborators">
-            <label class="my-2" for="tipologia"><strong>Tipologia</strong></label>
-            <select class="my-2" name="type_id" id="type_id">
-                @foreach ($types as $type)
-                    <option value="{{ $type->id }}">{{ $type->name }}</option>
-                @endforeach
-            </select>
+                <div>
+                    <label for="collaborators"><strong>Collaboratori</strong></label>
+                    <input type="text" id="collaborators" name="collaborators">
+                </div>
+                <div>
+                    <label class="my-2" for="tipologia"><strong>Tipologia</strong></label>
+                    <select class="my-2" name="type_id" id="type_id">
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <label class="my-2"><strong>Tecnologie:</strong></label>
             @foreach ($technologies as $technology)
                 <div>
@@ -38,13 +50,13 @@
                         value="{{ $technology->id }}">
                 </div>
             @endforeach
-
-
-            <button type="submit" class="btn btn-primary my-4">Crea progetto</button>
         </div>
-        {{-- Bottone per tornare a index --}}
-        <div class="text-center py-3">
-            <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
+        <div class="d-flex justify-content-center gap-4 mt-3">
+            <button type="submit" class="btn btn-primary">Crea progetto</button>
+            {{-- Bottone per tornare a index --}}
+            <div class="text-center pt-1">
+                <a class="btn btn-secondary text-light" href="{{ route('index') }}">Indietro</a>
+            </div>
         </div>
 
         @if ($errors->any())
