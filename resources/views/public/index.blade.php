@@ -2,7 +2,7 @@
 @section('content')
     <div class="container d-flex justify-content-center align-items-center">
         <div class="text-center">
-            <h1 class="d-inline-block mt-2 py-1 text-white rounded bg-secondary">Portfolio</h1>
+            <h1 class="d-inline-block mt-2 py-1" style="font-size: 4rem">Portfolio</h1>
             <div class="mt-4">
                 <ul class="p-0" style="width: 600px">
                     @foreach ($projects as $project)

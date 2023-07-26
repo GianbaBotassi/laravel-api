@@ -17,7 +17,7 @@ class ProjectController extends Controller
 
         $projects = Project::findOrFail($id);
 
-        return view('pages.project.show', compact('projects'));
+        return view('pages.project.project-show', compact('projects'));
     }
 
     // Funzione per reindirizzamento a pagina create
@@ -27,7 +27,7 @@ class ProjectController extends Controller
         $technologies = Technology::all();
 
 
-        return view('pages.project.create', compact('types', 'technologies'));
+        return view('pages.project.project-create', compact('types', 'technologies'));
     }
 
     // Funzione per creare nuovo progetto con validazioni basic
@@ -61,7 +61,7 @@ class ProjectController extends Controller
 
         $project = Project::findOrFail($id);
 
-        return view('pages.project.edit', compact('project', 'types', 'technologies'));
+        return view('pages.project.project-edit', compact('project', 'types', 'technologies'));
     }
 
     // Funzione per update progetto esistente
