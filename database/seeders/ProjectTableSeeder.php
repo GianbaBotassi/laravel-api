@@ -20,7 +20,7 @@ class ProjectTableSeeder extends Seeder
     {
 
         // Creazione di tot progetti
-        $projects = Project::factory()->count(10)->make();
+        $projects = Project::factory()->count(20)->make();
 
         // Ciclo i vari progetti creati
         foreach ($projects as $project) {
