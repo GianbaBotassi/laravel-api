@@ -17,7 +17,10 @@
         </div>
         <div class="row justify-content-between py-4">
             <span class="offset-4 col-3"><strong>Tipologia:</strong></span>
-            <span class="col-5">{{ $projects->type->name }}</span>
+            <div class="col-5">
+                <a href="{{ route('type-show', $projects->type->id) }}"
+                    class="btn btn-secondary text-white d-inline ">{{ $projects->type->name }}</a>
+            </div>
         </div>
         <div class="row justify-content-between py-4">
             <span class="offset-4 col-3"><strong>Tecnologie:</strong></span>
@@ -34,11 +37,10 @@
     </div>
     {{-- Bottone per edit --}}
     <div class="text-center">
-        <a class="btn btn-warning py-1 px-3 mx-3 text-decoration-none"
-            href="{{ route('project-edit', $projects->id) }}">Edit</a>
+        <a class="btn btn-warning py-1 px-3 mx-3" href="{{ route('project-edit', $projects->id) }}">Edit</a>
     </div>
     {{-- Bottone per tornare a index --}}
     <div class="text-center pt-3">
-        <a class="rounded bg-secondary py-1 px-2 text-decoration-none text-light" href="{{ route('index') }}">Indietro</a>
+        <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
     </div>
 @endsection

@@ -50,8 +50,7 @@
             <button type="submit" class="btn btn-primary my-4">Aggiorna progetto</button>
         </div>
         <div class="text-center pt-3">
-            <a class="rounded bg-secondary py-1 px-2 text-decoration-none text-light"
-                href="{{ route('index') }}">Indietro</a>
+            <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
         </div>
 
         @if ($errors->any())

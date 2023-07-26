@@ -44,8 +44,7 @@
         </div>
         {{-- Bottone per tornare a index --}}
         <div class="text-center py-3">
-            <a class="rounded bg-secondary py-1 px-2 text-decoration-none text-light"
-                href="{{ route('index') }}">Indietro</a>
+            <a class="rounded bg-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
         </div>
 
         @if ($errors->any())
