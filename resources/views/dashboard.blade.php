@@ -24,7 +24,8 @@
                         <div class="container d-flex justify-content-around py-4">
                             <a class="btn btn-info text-light" style="font-size: 2rem"
                                 href="{{ route('type-showall') }}">Tipologie</a>
-                            <button class="btn btn-info text-light" style="font-size: 2rem">Tecnologie</button>
+                            <a class="btn btn-info text-light" style="font-size: 2rem"
+                                href="{{ route('technology-showall') }}">Tecnologie</a>
 
                         </div>
 

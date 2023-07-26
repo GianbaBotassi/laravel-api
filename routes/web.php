@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\TechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,23 @@ Route::get('type/edit{id}', [TypeController::class, 'edit'])->name('type-edit');
 Route::put('type/update/{id}', [TypeController::class, 'update'])->name('type-update');
 
 Route::delete('type/destroy/{id}', [TypeController::class, 'destroy'])->name('type-destroy');
+
+
+/*--------------------------------- Rotte controller Technology--------------------------------------*/
+
+Route::get('technology/showall', [TechnologyController::class, 'showall'])->name('technology-showall');
+
+Route::get('technology/create', [TechnologyController::class, 'create'])->name('technology-create');
+
+Route::post('technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+
+Route::get('technology/show{id}', [TechnologyController::class, 'show'])->name('technology-show');
+
+Route::get('technology/edit{id}', [TechnologyController::class, 'edit'])->name('technology-edit');
+
+Route::put('technology/update/{id}', [TechnologyController::class, 'update'])->name('technology-update');
+
+Route::delete('technology/destroy/{id}', [TechnologyController::class, 'destroy'])->name('technology-destroy');
 
 
 Route::get('/dashboard', function () {
