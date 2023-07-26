@@ -50,7 +50,7 @@ class ProjectController extends Controller
 
         $project->technologies()->attach($data['technology']);
 
-        return redirect()->route('show', $project->id);
+        return redirect()->route('project-show', $project->id);
     }
 
     // Funzione per reindirizzamento a pagina edit
@@ -83,7 +83,7 @@ class ProjectController extends Controller
 
         $project->update($data);
 
-        return redirect()->route('show', $project->id);
+        return redirect()->route('project-show', $project->id);
     }
 
     // Funzione per eliminare progetto

@@ -34,7 +34,8 @@
     </div>
     {{-- Bottone per edit --}}
     <div class="text-center">
-        <a class="btn btn-warning py-1 px-3 mx-3 text-decoration-none" href="{{ route('edit', $projects->id) }}">Edit</a>
+        <a class="btn btn-warning py-1 px-3 mx-3 text-decoration-none"
+            href="{{ route('project-edit', $projects->id) }}">Edit</a>
     </div>
     {{-- Bottone per tornare a index --}}
     <div class="text-center pt-3">

@@ -21,25 +21,25 @@ use App\Http\Controllers\ProjectController;
 Route::get('/', [GuestController::class, 'index'])->name('index');
 
 // Rotta per la pagina create
-Route::get('project/create', [ProjectController::class, 'create'])->name('create');
+Route::get('project/create', [ProjectController::class, 'create'])->name('project-create');
 
 // Rotta per il salvataggio del nuovo progetto
-Route::post('project/store', [ProjectController::class, 'store'])->name('store');
+Route::post('project/store', [ProjectController::class, 'store'])->name('project-store');
 
 // Rotta per vedere dati
 Route::get('/project/show/{id}', [ProjectController::class, 'show'])
     // ->middleware(['auth'])
-    ->name('show');
+    ->name('project-show');
 
 
 // Rotta per editare progetto
-Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('edit');
+Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('project-edit');
 
 // Rotta senza pagina per update
-Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('update');
+Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('project-update');
 
 // Rotta per eliminare elemento
-Route::delete('destroy/{id}', [ProjectController::class, 'destroy'])->name('destroy');
+Route::delete('destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
 
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <form class="container my-2" method="POST" action="{{ route('update', $project->id) }}">
+    <form class="container my-2" method="POST" action="{{ route('project-update', $project->id) }}">
         @csrf
         @method('put')
         <div class="d-flex flex-column align-items-center">
