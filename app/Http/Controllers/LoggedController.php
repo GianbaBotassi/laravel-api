@@ -29,14 +29,17 @@ class LoggedController extends Controller
     // Funzione per creare nuovo progetto con validazioni basic
     public function store(Request $request)
     {
-        $data = $request->all();
-        // ->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'private' => 'required',
-        //     'collaborators' => 'required',
-        //     'type_id' => 'required'
-        // ]);
+
+        // dd($request->all());
+        $data = $request
+            ->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'private' => 'required',
+                'collaborators' => 'required',
+                'type_id' => 'required|integer',
+                'technology' => 'nullable|array'
+            ]);
 
         $project = Project::create($data);
 
@@ -57,14 +60,15 @@ class LoggedController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        // ->validate([
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'private' => 'required',
-        //     'collaborators' => 'required',
-        //     'type_id' => 'required'
-        // ]);
+        $data = $request
+            ->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'private' => 'required',
+                'collaborators' => 'required',
+                'type_id' => 'required',
+                'technology' => 'nullable|array'
+            ]);
 
         $project = Project::findOrFail($id);
 
