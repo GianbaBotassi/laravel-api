@@ -2,28 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
 
-class LoggedController extends Controller
+use Illuminate\Http\Request;
+
+class ProjectController extends Controller
 {
+
+    // Funzione che mostra i dettagli del progetto
     public function show($id)
     {
 
         $projects = Project::findOrFail($id);
 
-        return view('profile.show', compact('projects'));
+        return view('pages.project.show', compact('projects'));
     }
+
+    // Funzione per reindirizzamento a pagina create
     public function create()
     {
         $types = Type::all();
         $technologies = Technology::all();
 
 
-        return view('profile.create', compact('types', 'technologies'));
+        return view('pages.project.create', compact('types', 'technologies'));
     }
 
     // Funzione per creare nuovo progetto con validazioni basic
@@ -48,6 +52,8 @@ class LoggedController extends Controller
 
         return redirect()->route('show', $project->id);
     }
+
+    // Funzione per reindirizzamento a pagina edit
     public function edit($id)
     {
         $types = Type::all();
@@ -55,9 +61,10 @@ class LoggedController extends Controller
 
         $project = Project::findOrFail($id);
 
-        return view('profile.edit', compact('project', 'types', 'technologies'));
+        return view('pages.project.edit', compact('project', 'types', 'technologies'));
     }
 
+    // Funzione per update progetto esistente
     public function update(Request $request, $id)
     {
         $data = $request
@@ -79,7 +86,7 @@ class LoggedController extends Controller
         return redirect()->route('show', $project->id);
     }
 
-    // Funzione per eliminare elemento
+    // Funzione per eliminare progetto
     public function destroy($id)
     {
         $project = Project::findOrFail($id);

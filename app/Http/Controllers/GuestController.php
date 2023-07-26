@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\public;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Project;
-use App\Models\Type;
 
-class MainController extends Controller
+class GuestController extends Controller
 {
     public function index()
     {

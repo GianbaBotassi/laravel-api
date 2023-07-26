@@ -3,8 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\public\MainController;
-use App\Http\Controllers\LoggedController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,28 +18,28 @@ use App\Http\Controllers\LoggedController;
 */
 
 // Rotta index accessibile a tutti
-Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/', [GuestController::class, 'index'])->name('index');
 
 // Rotta per la pagina create
-Route::get('profile/create', [LoggedController::class, 'create'])->name('create');
+Route::get('project/create', [ProjectController::class, 'create'])->name('create');
 
 // Rotta per il salvataggio del nuovo progetto
-Route::post('profile/store', [LoggedController::class, 'store'])->name('store');
+Route::post('project/store', [ProjectController::class, 'store'])->name('store');
 
 // Rotta per vedere dati
-Route::get('/profile/show/{id}', [LoggedController::class, 'show'])
+Route::get('/project/show/{id}', [ProjectController::class, 'show'])
     // ->middleware(['auth'])
     ->name('show');
 
 
 // Rotta per editare progetto
-Route::get('profile/edit{id}', [LoggedController::class, 'edit'])->name('edit');
+Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('edit');
 
 // Rotta senza pagina per update
-Route::put('profile/update/{id}', [LoggedController::class, 'update'])->name('update');
+Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('update');
 
 // Rotta per eliminare elemento
-Route::delete('destroy/{id}', [LoggedController::class, 'destroy'])->name('destroy');
+Route::delete('destroy/{id}', [ProjectController::class, 'destroy'])->name('destroy');
 
 
 
