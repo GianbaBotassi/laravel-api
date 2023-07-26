@@ -18,10 +18,15 @@ class TypeFactory extends Factory
     {
         return [
             'name' => fake()->unique()->randomElement([
-                'Corso Boolean',
-                'Personale',
-                'Lavoro',
-                'Università'
+                'Arte',
+                'Videogames',
+                'Scuola',
+                'Montagna',
+                'Vela',
+                'Agricoltura',
+                'Viaggi',
+                'Altro'
+
             ]),
             'description' => fake()->paragraph()
         ];

@@ -36,7 +36,7 @@ class ProjectTableSeeder extends Seeder
 
         foreach ($projects as $project) {
 
-            $technologies = Technology::inRandomOrder()->limit(rand(1, 7))->get();
+            $technologies = Technology::inRandomOrder()->limit(rand(4, 7))->get();
             // dd($technologies);
 
             $project->technologies()->attach($technologies);
