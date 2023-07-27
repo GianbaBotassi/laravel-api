@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form class="container my-2" method="POST" action="{{ route('project-store') }}">
+    <form class="container my-2" method="POST" action="{{ route('project-store') }}" enctype="multipart/form-data">
         @csrf
         @method('POST')
 
@@ -42,6 +42,8 @@
                     </select>
                 </div>
             </div>
+            <label class="my-2" for="user_picture"><strong>Carica la tua immagine profilo</strong></label>
+            <input type="file" name="user_picture" id="user_picture">
             <label class="my-2"><strong>Tecnologie:</strong></label>
             @foreach ($technologies as $technology)
                 <div>
