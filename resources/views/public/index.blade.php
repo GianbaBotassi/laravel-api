@@ -6,11 +6,11 @@
             <div class="mt-2">
                 <ul class="p-0">
                     @foreach ($projects as $project)
-                        <li class="py-2 rounded list-hover">--
-                            <a class="py-3 px-3 text-dark me-auto" style="font-size: 1.2rem"
-                                href="{{ route('project-show', $project->id) }}">
+                        <li class="py-2">
+                            <a class="py-3 px-3 me-auto rounded list-hover" style="font-size: 1.2rem"
+                                href="{{ route('project-show', $project->id) }}">--
                                 {{ ucfirst($project->name) }}
-                            </a>--
+                                --</a>
                         </li>
                     @endforeach
                 </ul>
