@@ -52,9 +52,9 @@
             {{-- Ciclo tutte le tecnologie --}}
             @foreach ($technologies as $technology)
                 <div>
-                    <label for="technology-id">{{ $technology->name }}</label>
-                    <input type="checkbox" name="technology[]" id="technology-id" value="{{ $technology->id }}"
-                        {{-- Ciclo tutte le tecnologie del progetto, metto una condizione if per dare il check --}}
+                    <label for="technology{{ $technology->id }}">{{ $technology->name }}</label>
+                    <input type="checkbox" name="technology[]" id="technology{{ $technology->id }}"
+                        value="{{ $technology->id }}" {{-- Ciclo tutte le tecnologie del progetto, metto una condizione if per dare il check --}}
                         @foreach ($project->technologies as $subTechnology)
                             @checked ($subTechnology->id == $technology->id) @endforeach>
 
