@@ -42,13 +42,13 @@ class ProjectController extends Controller
                 'private' => 'required',
                 'collaborators' => 'required',
                 'type_id' => 'required|integer',
-                'technology' => 'required|nullable|array'
+                'technology' => 'nullable|array'
             ]);
 
         $project = Project::create($data);
 
-
-        $project->technologies()->attach($data['technology']);
+        if (array_key_exists('technology', $data))
+            $project->technologies()->attach($data['technology']);
 
         return redirect()->route('project-show', $project->id);
     }
@@ -74,12 +74,26 @@ class ProjectController extends Controller
                 'private' => 'required',
                 'collaborators' => 'required',
                 'type_id' => 'required',
-                'technology' => 'required|nullable|array'
+                'technology' => 'nullable|array'
             ]);
 
         $project = Project::findOrFail($id);
 
-        $project->technologies()->sync($data['technology']);
+
+        // Condizione se l'array tecnologie non è vuoto
+        // if (array_key_exists('technology', $data))
+        //     $project->technologies()->sync($data['technology']);
+        // else
+        //     $project->technologies()->detach();
+
+
+        // con operatore ternario
+
+        $project->technologies()->sync(
+            array_key_exists('technology', $data)
+                ? $data['technology']
+                : []
+        );
 
         $project->update($data);
 

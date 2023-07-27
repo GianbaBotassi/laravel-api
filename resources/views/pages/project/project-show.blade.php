@@ -24,17 +24,21 @@
         </div>
         <div class="row justify-content-between align-items-center py-4">
             <span class="offset-2 col-3"><strong>Tecnologie:</strong></span>
-            <span class="col-6">
-                @foreach ($projects->technologies as $technology)
-                    <a href="{{ route('technology-show', $technology->id) }}"
-                        class="btn btn-info px-2 py-1 d-inline-block me-1 text-light">
-                        {{ $technology->name }}
-                    </a>
-                    {{-- Nel caso posso usare condizione di laravel blade per selezionare ultimo loop --}}
-                    {{-- @if (!$loop->last)
-                        ,
+            @if (count($projects->technologies))
+                <span class="col-6">
+                    @foreach ($projects->technologies as $technology)
+                        <a href="{{ route('technology-show', $technology->id) }}"
+                            class="btn btn-info px-2 py-1 d-inline-block me-1 text-light">
+                            {{ $technology->name }}
+                        </a>
+                        {{-- Nel caso posso usare condizione di laravel blade per selezionare ultimo loop --}}
+                        {{-- @if (!$loop->last)
+                    ,
                     @endif --}}
-                @endforeach
+                    @endforeach
+                @else
+                    <span class="col-6">Non sono associate tecnologie.</span>
+            @endif
             </span>
         </div>
     </div>
