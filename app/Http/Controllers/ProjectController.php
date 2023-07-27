@@ -8,6 +8,8 @@ use App\Models\Technology;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
 
@@ -26,7 +28,6 @@ class ProjectController extends Controller
         $types = Type::all();
         $technologies = Technology::all();
 
-
         return view('pages.project.project-create', compact('types', 'technologies'));
     }
 
@@ -42,8 +43,11 @@ class ProjectController extends Controller
                 'private' => 'required',
                 'collaborators' => 'required',
                 'type_id' => 'required|integer',
-                'technology' => 'nullable|array'
+                'technology' => 'nullable|array',
+                'user_picture' => 'nullable|max:2048'
             ]);
+
+        $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
 
         $project = Project::create($data);
 

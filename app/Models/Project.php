@@ -14,7 +14,8 @@ class Project extends Model
         'description',
         'private',
         'collaborators',
-        'type_id'
+        'type_id',
+        'user_picture'
     ];
 
     // Relazione onetomany con Type

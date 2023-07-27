@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('private')->default(false);
             $table->unsignedTinyInteger('collaborators');
+            $table->string('user_picture')->nullable();
 
             $table->timestamps();
         });
