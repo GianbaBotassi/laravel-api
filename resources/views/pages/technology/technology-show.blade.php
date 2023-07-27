@@ -16,7 +16,7 @@
             <ul class="col-6">
                 @foreach ($technology->projects as $project)
                     <li class="list-styled">
-                        <a href="{{ route('project-show', $project->id) }}">
+                        <a class="list-hover rounded px-2 px-1" href="{{ route('project-show', $project->id) }}">
                             {{ ucfirst($project->name) }}
                         </a>
                     </li>
