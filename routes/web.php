@@ -25,61 +25,67 @@ Route::get('/', [GuestController::class, 'index'])->name('index');
 
 /*--------------------------------- Rotte controller Project--------------------------------------*/
 
-// Rotta per la pagina create
-Route::get('project/create', [ProjectController::class, 'create'])->name('project-create');
+Route::middleware(['auth'])->group(function () {
 
-// Rotta per il salvataggio del nuovo progetto
-Route::post('project/store', [ProjectController::class, 'store'])->name('project-store');
+    // Rotta per la pagina create
+    Route::get('project/create', [ProjectController::class, 'create'])->name('project-create');
 
-// Rotta per vedere dati
-Route::get('/project/show/{id}', [ProjectController::class, 'show'])
-    // ->middleware(['auth'])
-    ->name('project-show');
+    // Rotta per il salvataggio del nuovo progetto
+    Route::post('project/store', [ProjectController::class, 'store'])->name('project-store');
 
-// Rotta per editare progetto
-Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('project-edit');
+    // Rotta per vedere dati
+    Route::get('/project/show/{id}', [ProjectController::class, 'show'])
+        // ->middleware(['auth'])
+        ->name('project-show');
 
-// Rotta senza pagina per update
-Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('project-update');
+    // Rotta per editare progetto
+    Route::get('project/edit{id}', [ProjectController::class, 'edit'])->name('project-edit');
 
-// Rotta per eliminare elemento
-Route::delete('project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
+    // Rotta senza pagina per update
+    Route::put('project/update/{id}', [ProjectController::class, 'update'])->name('project-update');
 
+    // Rotta per eliminare elemento
+    Route::delete('project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
+});
 
 
 /*--------------------------------- Rotte controller Type--------------------------------------*/
+Route::middleware(['auth'])->group(function () {
 
-Route::get('type/showall', [TypeController::class, 'showall'])->name('type-showall');
+    Route::get('type/showall', [TypeController::class, 'showall'])->name('type-showall');
 
-Route::get('type/create', [TypeController::class, 'create'])->name('type-create');
+    Route::get('type/create', [TypeController::class, 'create'])->name('type-create');
 
-Route::post('type/store', [TypeController::class, 'store'])->name('type-store');
+    Route::post('type/store', [TypeController::class, 'store'])->name('type-store');
 
-Route::get('type/show{id}', [TypeController::class, 'show'])->name('type-show');
+    Route::get('type/show{id}', [TypeController::class, 'show'])->name('type-show');
 
-Route::get('type/edit{id}', [TypeController::class, 'edit'])->name('type-edit');
+    Route::get('type/edit{id}', [TypeController::class, 'edit'])->name('type-edit');
 
-Route::put('type/update/{id}', [TypeController::class, 'update'])->name('type-update');
+    Route::put('type/update/{id}', [TypeController::class, 'update'])->name('type-update');
 
-Route::delete('type/destroy/{id}', [TypeController::class, 'destroy'])->name('type-destroy');
+    Route::delete('type/destroy/{id}', [TypeController::class, 'destroy'])->name('type-destroy');
+});
 
 
 /*--------------------------------- Rotte controller Technology--------------------------------------*/
 
-Route::get('technology/showall', [TechnologyController::class, 'showall'])->name('technology-showall');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('technology/create', [TechnologyController::class, 'create'])->name('technology-create');
+    Route::get('technology/showall', [TechnologyController::class, 'showall'])->name('technology-showall');
 
-Route::post('technology/store', [TechnologyController::class, 'store'])->name('technology-store');
+    Route::get('technology/create', [TechnologyController::class, 'create'])->name('technology-create');
 
-Route::get('technology/show{id}', [TechnologyController::class, 'show'])->name('technology-show');
+    Route::post('technology/store', [TechnologyController::class, 'store'])->name('technology-store');
 
-Route::get('technology/edit{id}', [TechnologyController::class, 'edit'])->name('technology-edit');
+    Route::get('technology/show{id}', [TechnologyController::class, 'show'])->name('technology-show');
 
-Route::put('technology/update/{id}', [TechnologyController::class, 'update'])->name('technology-update');
+    Route::get('technology/edit{id}', [TechnologyController::class, 'edit'])->name('technology-edit');
 
-Route::delete('technology/destroy/{id}', [TechnologyController::class, 'destroy'])->name('technology-destroy');
+    Route::put('technology/update/{id}', [TechnologyController::class, 'update'])->name('technology-update');
 
+    Route::delete('technology/destroy/{id}', [TechnologyController::class, 'destroy'])->name('technology-destroy');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
