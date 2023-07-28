@@ -37,20 +37,20 @@ class ProjectController extends Controller
     // Funzione per creare nuovo progetto con validazioni basic
     public function store(Request $request)
     {
+        $data = $request->validate($this->getValidation());
 
-        // dd($request->all());
-        $data = $request
-            ->validate($this->getValidation());
-
+        // Se è stata messa foto nel form allora la aggiungo fisicamente allo storage
         if (array_key_exists('user_picture', $data)) {
             $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
         }
 
         $project = Project::create($data);
 
+        // Se sono state indicate tecnologie nella checkbox allora le collego tabella ponte
         if (array_key_exists('technology', $data))
             $project->technologies()->attach($data['technology']);
 
+        // Invio una mail all'admin e una all'utente loggato
         Mail::to('amministrazione@project.com')->send(new MailProjectCreated($project));
         Mail::to(Auth::user()->email)->send(new MailProjectCreated($project));
 
@@ -71,8 +71,7 @@ class ProjectController extends Controller
     // Funzione per update progetto esistente
     public function update(Request $request, $id)
     {
-        $data = $request
-            ->validate($this->getValidation());
+        $data = $request->validate($this->getValidation());
 
         $project = Project::findOrFail($id);
 
@@ -90,17 +89,17 @@ class ProjectController extends Controller
             $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
         }
 
+        $project->update($data);
+
         // Condizione se l'array tecnologie non è vuoto
+
+        // Opzione 1
         // if (array_key_exists('technology', $data))
         //     $project->technologies()->sync($data['technology']);
         // else
         //     $project->technologies()->detach();
 
-        // con operatore ternario
-
-
-        $project->update($data);
-
+        // Opzione 2 con operatore ternario
         $project->technologies()->sync(
             array_key_exists('technology', $data)
                 ? $data['technology']
@@ -115,26 +114,33 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
+        // Elimino i collegamenti con la tabella ponte
         $project->technologies()->detach();
 
         $project->delete();
 
         return redirect()->route('index');
     }
+
+    // Funzione per eliminare user_picture
     public function destroyPicture($id)
     {
         $project = Project::findOrFail($id);
 
+        // Se esiste la foto la elimino fisicamente
         if ($project->user_picture) {
 
             Storage::delete($project->user_picture);
         }
 
+        // La elimino dal db
         $project->user_picture = null;
         $project->save();
 
         return redirect()->route('project-show', $project->id);
     }
+
+    // Funzione per validazioni
     private function getValidation()
     {
         return [

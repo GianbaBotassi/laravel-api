@@ -34,8 +34,10 @@ class MailProjectCreated extends Mailable
     public function envelope()
     {
         return new Envelope(
+            // Aggiungo il mittente
             from: new Address('noreplymail@gmail.com', 'Bool-Staff'),
-            subject: 'Mail Project Created'
+            // Aggiungo nome progetto nel subject
+            subject: 'Nuovo progetto "' . $this->project->name . '".'
 
         );
     }
@@ -48,6 +50,7 @@ class MailProjectCreated extends Mailable
     public function content()
     {
         return new Content(
+            // Collego il template della mail
             view: 'layouts.mail-template',
         );
     }
