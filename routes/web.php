@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 /*--------------------------------- Rotte controller Type--------------------------------------*/
+// Solo se autenticati
 Route::middleware(['auth'])->group(function () {
 
     Route::get('type/showall', [TypeController::class, 'showall'])->name('type-showall');
@@ -73,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 /*--------------------------------- Rotte controller Technology--------------------------------------*/
-
+// Solo se autenticati
 Route::middleware(['auth'])->group(function () {
 
     Route::get('technology/showall', [TechnologyController::class, 'showall'])->name('technology-showall');
