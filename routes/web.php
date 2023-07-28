@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
 
     Route::delete('project/destroy/{id}/picture', [ProjectController::class, 'destroyPicture'])->name('project-destroy-picture');
+
+    Route::get('mail-template/project{id}', [ProjectController::class, 'sendMail'])->name('send-mail');
 });
 
 

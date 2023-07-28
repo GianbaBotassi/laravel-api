@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
+use App\Mail\MailProjectCreated;
+
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -39,12 +42,17 @@ class ProjectController extends Controller
         $data = $request
             ->validate($this->getValidation());
 
-        $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
+        if (array_key_exists('user_picture', $data)) {
+            $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
+        }
 
         $project = Project::create($data);
 
         if (array_key_exists('technology', $data))
             $project->technologies()->attach($data['technology']);
+
+        Mail::to('amministrazione@project.com')->send(new MailProjectCreated($project));
+        Mail::to(Auth::user()->email)->send(new MailProjectCreated($project));
 
         return redirect()->route('project-show', $project->id);
     }
@@ -90,15 +98,14 @@ class ProjectController extends Controller
 
         // con operatore ternario
 
+
+        $project->update($data);
+
         $project->technologies()->sync(
             array_key_exists('technology', $data)
                 ? $data['technology']
                 : []
         );
-
-        // dd($data);
-
-        $project->update($data);
 
         return redirect()->route('project-show', $project->id);
     }
