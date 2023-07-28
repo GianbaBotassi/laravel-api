@@ -57,14 +57,30 @@
             </div>
         </div>
         <div class="d-flex justify-content-center gap-4">
+
             {{-- Bottone per tornare a index --}}
             <div class="text-center">
                 <a class="btn btn-secondary py-1 px-2 text-light" href="{{ route('index') }}">Indietro</a>
             </div>
+
             {{-- Bottone per edit --}}
             <div class="text-center">
                 <a class="btn btn-warning py-1 px-3" href="{{ route('project-edit', $projects->id) }}">Edit</a>
             </div>
+
+            {{-- Bottone elimina foto --}}
+
+            @if ($projects->user_picture)
+                <form method="POST" action="{{ route('project-destroy-picture', $projects->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger py-1 px-1 text-decoration-none text-white" type="submit"
+                        name="delete-picture" id="delete-picture" class="btn btn-primary">
+                        Elimina foto
+                    </button>
+                </form>
+            @endif
+
             {{-- Bottone che richiama la modale --}}
             <button class="btn btn-danger py-1 px-1 text-decoration-none text-white" type="button" class="btn btn-primary"
                 data-toggle="modal" data-target="#modaldelete">

@@ -114,6 +114,20 @@ class ProjectController extends Controller
 
         return redirect()->route('index');
     }
+    public function destroyPicture($id)
+    {
+        $project = Project::findOrFail($id);
+
+        if ($project->user_picture) {
+
+            Storage::delete($project->user_picture);
+        }
+
+        $project->user_picture = null;
+        $project->save();
+
+        return redirect()->route('project-show', $project->id);
+    }
     private function getValidation()
     {
         return [

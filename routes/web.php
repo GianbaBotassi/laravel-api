@@ -46,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Rotta per eliminare elemento
     Route::delete('project/destroy/{id}', [ProjectController::class, 'destroy'])->name('project-destroy');
+
+    Route::delete('project/destroy/{id}/picture', [ProjectController::class, 'destroyPicture'])->name('project-destroy-picture');
 });
 
 
