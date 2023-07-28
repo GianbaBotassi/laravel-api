@@ -3,7 +3,8 @@
     @csrf
     @method('put')
     <h1 class="text-center py-2">{{ ucfirst($project->name) }}</h1>
-    <form class="container my-2" method="POST" action="{{ route('project-update', $project->id) }}">
+    <form class="container my-2" method="POST" action="{{ route('project-update', $project->id) }}"
+        enctype="multipart/form-data">
         @csrf
         @method('put')
         <div class="d-flex flex-column align-items-center">
@@ -47,6 +48,18 @@
                     </select>
                 </div>
             </div>
+            <div class="py-2" style="overflow: hidden;width:100px;height:100px">
+                @if ($project->user_picture)
+                    <img src="{{ asset('storage/' . $project->user_picture) }}" width="100%" height="100%"
+                        style="object-fit: cover;border-radius:10px">
+                @else
+                    <img src="{{ asset('storage/images/default.jpg') }}" width="100%" height="100%"
+                        style="object-fit: cover;border-radius:10px">
+                @endif
+            </div>
+            <label class="my-2" for="user_picture"><strong>Carica la tua immagine profilo</strong></label>
+            <input type="file" name="user_picture" id="user_picture">
+
             <label class="my-2"><strong>Tecnologie:</strong></label>
 
             {{-- Ciclo tutte le tecnologie --}}

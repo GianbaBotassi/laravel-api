@@ -37,15 +37,7 @@ class ProjectController extends Controller
 
         // dd($request->all());
         $data = $request
-            ->validate([
-                'name' => 'required',
-                'description' => 'required',
-                'private' => 'required',
-                'collaborators' => 'required',
-                'type_id' => 'required|integer',
-                'technology' => 'nullable|array',
-                'user_picture' => 'nullable|max:2048'
-            ]);
+            ->validate($this->getValidation());
 
         $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
 
@@ -72,24 +64,29 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request
-            ->validate([
-                'name' => 'required',
-                'description' => 'required',
-                'private' => 'required',
-                'collaborators' => 'required',
-                'type_id' => 'required',
-                'technology' => 'nullable|array'
-            ]);
+            ->validate($this->getValidation());
 
         $project = Project::findOrFail($id);
 
+        // Se non è stata inserita una foto si reinserisce nei data la voto vecchia
+        if (!array_key_exists('user_picture', $data)) {
+            $data['user_picture'] = $project->user_picture;
+        } else {
+
+            // Se la foto progetto esiste, la elimino dallo storage
+            if ($project->user_picture) {
+
+                Storage::delete($project->user_picture);
+            }
+            // In ogni caso poi viene inserita la nuova
+            $data['user_picture'] = Storage::put('uploads', $data['user_picture']);
+        }
 
         // Condizione se l'array tecnologie non è vuoto
         // if (array_key_exists('technology', $data))
         //     $project->technologies()->sync($data['technology']);
         // else
         //     $project->technologies()->detach();
-
 
         // con operatore ternario
 
@@ -98,6 +95,8 @@ class ProjectController extends Controller
                 ? $data['technology']
                 : []
         );
+
+        // dd($data);
 
         $project->update($data);
 
@@ -114,5 +113,17 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect()->route('index');
+    }
+    private function getValidation()
+    {
+        return [
+            'name' => 'required',
+            'description' => 'required',
+            'private' => 'required',
+            'collaborators' => 'required',
+            'type_id' => 'required|integer',
+            'technology' => 'nullable|array',
+            'user_picture' => 'nullable|max:2048'
+        ];
     }
 }
