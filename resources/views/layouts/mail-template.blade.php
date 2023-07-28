@@ -12,7 +12,7 @@
     <p>Ciao, ecco il tuo nuovo progetto, qua sotto troverai i dettagli.</p>
 
     <div>
-        <img src="{{ $message->embed($project->user_picture) }}">
+        <img src="{{ $message->embed('storage/' . $project->user_picture) }}">
     </div>
     <div>
         <span><strong>Nome:</strong></span>
