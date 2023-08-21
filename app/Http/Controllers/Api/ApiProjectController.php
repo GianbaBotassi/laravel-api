@@ -13,7 +13,7 @@ class ApiProjectController extends Controller
     {
         $projects = Project::all();
         return response()->json([
-            "data" => $projects
+            "projects" => $projects
         ]);
     }
 }
