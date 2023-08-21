@@ -5,4 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\ApiProjectController;
 
-Route::get('api', [ApiProjectController::class, 'apiIndex']);
+Route::get('', [ApiProjectController::class, 'apiIndex']);
