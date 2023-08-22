@@ -11,9 +11,17 @@ class ApiProjectController extends Controller
 {
     public function apiIndex()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(5);
         return response()->json([
             "projects" => $projects
+        ]);
+    }
+    public function apiShow($id)
+    {
+        $project = Project::findOrFail($id);
+
+        return response()->json([
+            "project" => $project
         ]);
     }
 }
