@@ -18,7 +18,7 @@ class ApiProjectController extends Controller
     }
     public function apiShow($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::with('type', 'technologies')->findOrFail($id);
 
         return response()->json([
             "project" => $project
