@@ -48,6 +48,11 @@ class ApiProjectController extends Controller
 
         $project = Project::create($data);
 
+        // Se sono state indicate tecnologie nella checkbox allora le collego tabella ponte
+        if (array_key_exists('technologies', $data))
+            $project->technologies()->attach($data['technologies']);
+
+        // Ritorno l'id per poter aggiungerlo all'url e reindirizzare dopo la creazione
         return response()->json([
             "id" => $project->id
         ]);
